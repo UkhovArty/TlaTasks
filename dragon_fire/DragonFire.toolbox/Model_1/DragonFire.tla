@@ -76,18 +76,32 @@ A1 == /\ pc[1] = "A1"
 A2 == /\ pc[1] = "A2"
       /\ TRUE
       /\ IF (fireball > 0)
-            THEN /\ pc' = [pc EXCEPT ![1] = "A4"]
+            THEN /\ fireball' = fireball - 1
+                 /\ pc' = [pc EXCEPT ![1] = "A4"]
             ELSE /\ pc' = [pc EXCEPT ![1] = "A7"]
-      /\ UNCHANGED << firebreathing, fireball, c, tmp, temp >>
+                 /\ UNCHANGED fireball
+      /\ UNCHANGED << firebreathing, c, tmp, temp >>
 
 A4 == /\ pc[1] = "A4"
       /\ TRUE
-      /\ IF fireball > 0
-            THEN /\ IF fireball > 0
-                       THEN /\ pc' = [pc EXCEPT ![1] = "C1"]
-                       ELSE /\ pc' = [pc EXCEPT ![1] = "A7"]
-            ELSE /\ pc' = [pc EXCEPT ![1] = "A7"]
+      /\ pc' = [pc EXCEPT ![1] = "A5"]
       /\ UNCHANGED << firebreathing, fireball, c, tmp, temp >>
+
+A5 == /\ pc[1] = "A5"
+      /\ IF fireball > 0
+            THEN /\ fireball' = fireball - 1
+                 /\ pc' = [pc EXCEPT ![1] = "A6"]
+            ELSE /\ pc' = [pc EXCEPT ![1] = "A7"]
+                 /\ UNCHANGED fireball
+      /\ UNCHANGED << firebreathing, c, tmp, temp >>
+
+A6 == /\ pc[1] = "A6"
+      /\ IF fireball > 0
+            THEN /\ fireball' = fireball - 1
+                 /\ pc' = [pc EXCEPT ![1] = "C1"]
+            ELSE /\ pc' = [pc EXCEPT ![1] = "A7"]
+                 /\ UNCHANGED fireball
+      /\ UNCHANGED << firebreathing, c, tmp, temp >>
 
 C1 == /\ pc[1] = "C1"
       /\ TRUE
@@ -119,7 +133,8 @@ A11 == /\ pc[1] = "A11"
        /\ pc' = [pc EXCEPT ![1] = "A0"]
        /\ UNCHANGED << fireball, c, tmp, temp >>
 
-thread == A0 \/ A1 \/ A2 \/ A4 \/ C1 \/ A7 \/ A8 \/ A9 \/ A10 \/ A11
+thread == A0 \/ A1 \/ A2 \/ A4 \/ A5 \/ A6 \/ C1 \/ A7 \/ A8 \/ A9 \/ A10
+             \/ A11
 
 B0 == /\ pc[2] = "B0"
       /\ IF c < 2
@@ -158,5 +173,5 @@ Spec == Init /\ [][Next]_vars
 CriticalSections == {pc[1],pc[2]} /= {"C1", "C2"}
 =============================================================================
 \* Modification History
-\* Last modified Tue Jan 05 20:45:39 MSK 2021 by auhov
+\* Last modified Thu Jan 07 13:29:00 MSK 2021 by auhov
 \* Created Sat Dec 12 17:34:25 MSK 2020 by auhov

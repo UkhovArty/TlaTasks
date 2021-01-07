@@ -2,13 +2,13 @@
 EXTENDS DragonFire, TLC
 
 \* SPECIFICATION definition @modelBehaviorSpec:0
-spec_160986876174059000 ==
+spec_1610015386947400000 ==
 Spec
 ----
 \* INVARIANT definition @modelCorrectnessInvariants:0
-inv_160986876175060000 ==
+inv_1610015386958401000 ==
 CriticalSections
 ----
 =============================================================================
 \* Modification History
-\* Created Tue Jan 05 20:46:01 MSK 2021 by auhov
+\* Created Thu Jan 07 13:29:46 MSK 2021 by auhov

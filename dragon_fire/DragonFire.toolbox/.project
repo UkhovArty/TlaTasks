@@ -23,12 +23,7 @@
 		<link>
 			<name>DragonFire.tla</name>
 			<type>1</type>
-			<location>D:/DragonFire/DragonFire.tla</location>
-		</link>
-		<link>
-			<name>RightDragonFire.tla</name>
-			<type>1</type>
-			<location>D:/DragonFire/RightDragonFire.tla</location>
+			<location>D:/dragon_fire/DragonFire.tla</location>
 		</link>
 	</linkedResources>
 </projectDescription>

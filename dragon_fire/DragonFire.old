@@ -173,5 +173,5 @@ Spec == Init /\ [][Next]_vars
 CriticalSections == {pc[1],pc[2]} /= {"C1", "C2"}
 =============================================================================
 \* Modification History
-\* Last modified Tue Jan 05 20:45:39 MSK 2021 by auhov
+\* Last modified Thu Jan 07 13:29:00 MSK 2021 by auhov
 \* Created Sat Dec 12 17:34:25 MSK 2020 by auhov
